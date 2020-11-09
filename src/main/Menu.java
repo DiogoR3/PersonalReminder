@@ -6,15 +6,15 @@ public class Menu {
 		System.out.println("**** Personal Reminder ****");
 	}
 	
-	public void Start()	{
+	public void start()	{
 		
 		System.out.println("1 - Add a new reminder");
 		System.out.println("2 - Edit a reminder");
 		System.out.println("3 - List all reminders");
 		System.out.println("Please choose and option: ");
 		
-		String input = Utils.ReadInput();
-		MenuOption option = MenuOption.GetOption(input);
+		String input = Utils.readInput();
+		MenuOption option = MenuOption.getOption(input);
 	}
 	
 	public enum MenuOption {
@@ -24,17 +24,17 @@ public class Menu {
 				
 		}
 		
-		public static MenuOption GetOption(int option) {
+		public static MenuOption getOption(String option) {
 			MenuOption menuOption;
 			
 			switch(option) {
-				case 1: menuOption = MenuOption.Add;
+				case "1": menuOption = MenuOption.Add;
 				break;
 				
-				case 2: menuOption = MenuOption.Edit;
+				case "2": menuOption = MenuOption.Edit;
 				break;
 				
-				case 3: menuOption = MenuOption.List;
+				case "3": menuOption = MenuOption.List;
 				break;
 				
 				default: return MenuOption.None;
@@ -43,10 +43,9 @@ public class Menu {
 			return menuOption;
 		}
 		
-		public static MenuOption GetOption(String option) {
+		public static MenuOption getOption(int option) {
 			
-			return GetOption(Integer.parseInt(option));
+			return getOption(Integer.toString(option));
 		}
 	}
-
 }

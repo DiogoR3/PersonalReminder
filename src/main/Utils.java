@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Utils {
 
-	public static String ReadInput() {
+	public static String readInput() {
 		
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
