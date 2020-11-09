@@ -1,7 +1,11 @@
 package main;
 
+import java.util.ArrayList;
+
 public class Menu {
 
+	private ArrayList<Reminder> reminderList = new ArrayList<Reminder>();
+	
 	public Menu() {
 		System.out.println("**** Personal Reminder ****");
 	}
@@ -15,6 +19,18 @@ public class Menu {
 		
 		String input = Utils.readInput();
 		MenuOption option = MenuOption.getOption(input);
+		
+		if(option == MenuOption.Add) {
+			addReminder();
+		}else if(option == MenuOption.Edit) {
+			editReminder();
+		}else if(option == MenuOption.List) {
+			listReminders();
+		}else {
+			System.out.println("Invalid option!");
+		}
+		
+		start();
 	}
 	
 	public enum MenuOption {
@@ -48,4 +64,23 @@ public class Menu {
 			return getOption(Integer.toString(option));
 		}
 	}
+	
+	private void addReminder() {
+		
+		
+		
+		Reminder reminder = new Reminder(null, "test");
+		reminderList.add(reminder);
+	}
+	
+	private void editReminder() {
+		
+	}
+	
+	private void listReminders() {
+		for(int x = 0; x < reminderList.size(); x++) {
+			System.out.println(reminderList.get(x));
+		}
+	}
+	
 }

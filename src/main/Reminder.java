@@ -4,16 +4,16 @@ import java.time.Period;
 
 public class Reminder {
 
-	public Period Period;
-	public String Description;
+	public Period period;
+	public String description;
 	
-	public Reminder(Period Period, String Description) {
-		this.Period = Period;
-		this.Description = Description;
+	public Reminder(Period period, String description) {
+		this.period = period;
+		this.description = description;
 	}
 
 	@Override
 	public String toString() {
-		return Description + " - " + Period;
+		return description + " - " + period;
 	}
 }

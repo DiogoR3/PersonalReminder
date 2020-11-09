@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.*;
+import java.awt.TrayIcon.MessageType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,4 +17,18 @@ public class Utils {
 			return null;
 		}
 	}
+	
+    public void displayTray(int index, Reminder reminder) throws AWTException {
+    	
+        SystemTray tray = SystemTray.getSystemTray();
+
+        Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
+        TrayIcon trayIcon = new TrayIcon(image, "Tray Icon");
+
+        trayIcon.setImageAutoSize(true);
+        trayIcon.setToolTip("Reminder #" + index);
+        tray.add(trayIcon);
+
+        trayIcon.displayMessage("Reminder #" + index, reminder.description, MessageType.INFO);
+    }
 }
