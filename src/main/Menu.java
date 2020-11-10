@@ -67,20 +67,50 @@ public class Menu {
 	
 	private void addReminder() {
 		
+		System.out.print("Please type the reminder description: ");
+		String reminderDescription = Utils.readInput();
 		
+		System.out.print("Please type the reminder interval in seconds: ");
+		String reminderSeconds = Utils.readInput();
 		
-		Reminder reminder = new Reminder(null, "test");
+		Reminder reminder = new Reminder(reminderList.size() + 1, reminderDescription, Long.parseLong(reminderSeconds));
 		reminderList.add(reminder);
 	}
 	
 	private void editReminder() {
 		
+		if(reminderList.isEmpty()) {
+			System.out.println("There are no reminders configured!");
+			return;
+		}
+		
+		System.out.println("Please choose a reminder:");
+		listReminders();
+		
+		String reminderId = Utils.readInput();
+
+		try {
+			Reminder reminder = reminderList.get(Integer.parseInt(reminderId) - 1);
+			editReminder(reminder);
+			
+		}catch(Exception ex) {
+			System.out.println("There are no reminders with the id '" + reminderId + "'");
+		}
+	}
+	
+	private void editReminder(Reminder reminder) {
+		
+		System.out.print("Please type the reminder description: ");
+		reminder.description = Utils.readInput();
+		
+		System.out.print("Please type the reminder interval in seconds: ");
+		reminder.setInterval(Long.parseLong(Utils.readInput()));
 	}
 	
 	private void listReminders() {
 		for(int x = 0; x < reminderList.size(); x++) {
 			System.out.println(reminderList.get(x));
 		}
+		System.out.println();
 	}
-	
 }

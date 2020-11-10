@@ -18,7 +18,7 @@ public class Utils {
 		}
 	}
 	
-    public void displayTray(int index, Reminder reminder) throws AWTException {
+    public static void displayTray(Reminder reminder) throws AWTException {
     	
         SystemTray tray = SystemTray.getSystemTray();
 
@@ -26,9 +26,9 @@ public class Utils {
         TrayIcon trayIcon = new TrayIcon(image, "Tray Icon");
 
         trayIcon.setImageAutoSize(true);
-        trayIcon.setToolTip("Reminder #" + index);
+        trayIcon.setToolTip("Reminder #" + reminder.id);
         tray.add(trayIcon);
 
-        trayIcon.displayMessage("Reminder #" + index, reminder.description, MessageType.INFO);
+        trayIcon.displayMessage("Reminder #" + reminder.id, reminder.description, MessageType.INFO);
     }
 }
