@@ -30,5 +30,6 @@ public class Utils {
         tray.add(trayIcon);
 
         trayIcon.displayMessage("Reminder #" + reminder.id, reminder.description, MessageType.INFO);
+        tray.remove(trayIcon);
     }
 }
